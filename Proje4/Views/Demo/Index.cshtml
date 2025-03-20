@@ -1,0 +1,39 @@
+﻿
+@{
+	ViewData["Title"] = "Kat Planı";
+}
+<h4>Kat Planı</h4>
+<hr />
+<div class="form-group">
+    @Html.Label("Kat Bilgisi")
+    @Html.DropDownList("KatId",Model.KatList,"--Katları Görüntülemek İçin Seçiniz--",new {@class="form-control"})
+    <br />
+    @Html.Label("Park Yeri Bilgisi")
+    @Html.DropDownList("ParkId",Model.ParkList,"--Park Yerlerini Görüntülemek İçin Seçiniz--",new {@class="form-control"})
+
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script>
+    $(function () {
+        $('#KatId').change(function () {
+            var id = $('#KatId').val();
+            $.ajax({
+                url: '/Demo/GetParks',
+                data: { KatId: id },
+                type: "POST",
+                dataType: "Json",
+                success: function (data) {
+                    console.log(data);
+                    $('#ParkId').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#ParkId').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</option>");
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+

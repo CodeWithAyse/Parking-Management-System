@@ -1,0 +1,49 @@
+﻿@model Proje4.Models.MusteriBilgileri
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4>Müşteri Bilgileri</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MusteriId" />
+            <div class="form-group">
+                <label asp-for="MusteriAd" class="control-label"></label>
+                <input asp-for="MusteriAd" class="form-control" />
+                <span asp-validation-for="MusteriAd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MusteriSoyad" class="control-label"></label>
+                <input asp-for="MusteriSoyad" class="form-control" />
+                <span asp-validation-for="MusteriSoyad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MusteriTc" class="control-label"></label>
+                <input asp-for="MusteriTc" class="form-control" />
+                <span asp-validation-for="MusteriTc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MusteriTel" class="control-label"></label>
+                <input asp-for="MusteriTel" class="form-control" />
+                <span asp-validation-for="MusteriTel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ParkId" class="control-label"></label>
+                <select asp-for="ParkId" class="form-control" asp-items="ViewBag.ParkId"></select>
+                <span asp-validation-for="ParkId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

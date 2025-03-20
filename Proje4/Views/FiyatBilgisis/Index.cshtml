@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Proje4.Models.FiyatBilgisi>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Otopark Fiyat Bilgileri</h4>
+<hr />
+<p>
+    <a class="btn btn-primary" asp-action="Create">Yeni Kayıt</a>
+</p>
+<table class="table table-bordered table-striped" id="tbllist">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fiyat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Saat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToplamTutar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Musteri.MusteriAd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Musteri.MusteriSoyad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Musteri.MusteriTc)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fiyat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Saat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToplamTutar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Musteri.MusteriAd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Musteri.MusteriSoyad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Musteri.MusteriTc)
+            </td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.FiyatId">Edit</a> |
+                    <a class="btn btn-success" asp-action="Details" asp-route-id="@item.FiyatId">Details</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.FiyatId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+    var js = jQuery.noConflict(true);
+    js(document).ready(function () {
+        js('#tbllist').DataTable({
+
+        });
+    });
+</script>

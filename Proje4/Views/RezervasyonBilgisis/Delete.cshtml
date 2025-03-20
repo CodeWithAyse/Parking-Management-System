@@ -1,0 +1,42 @@
+﻿@model Proje4.Models.RezervasyonBilgisi
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<h3>Bu Müşteriyi Silmek İstediğine Emin Misiniz?</h3>
+<div>
+    <h4>RezervasyonBilgisi</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FinishTime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FinishTime)
+        </dd>
+        <dt class = "col-sm-2">
+            Araç Plaka
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Arac.AracPlaka)
+        </dd>
+        <dt class = "col-sm-2">
+            Park Yeri Adı
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Park.ParkAd)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="RezervasyonId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

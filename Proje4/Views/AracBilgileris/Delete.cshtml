@@ -1,0 +1,49 @@
+﻿@model Proje4.Models.AracBilgileri
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h3>Silmek İstediğinize Emin Misiniz?</h3>
+<div>
+    <h4>Araç Bilgileri</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AracPlaka)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AracPlaka)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AracMarka)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AracMarka)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AracModel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AracModel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AracPhoto)
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="@("~/Image/"+Model.AracPhoto)" asp-append-version=true width="100" height="100" />
+        </dd>
+        <dt class = "col-sm-2">
+            Müşteri Adı
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Musteri.MusteriAd)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="AracId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

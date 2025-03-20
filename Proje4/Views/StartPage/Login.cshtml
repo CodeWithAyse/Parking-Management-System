@@ -1,0 +1,50 @@
+﻿@model Proje4.Models.KullaniciBilgisi
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Login";
+}
+
+<header class="masthead">
+    <div class="container-fluid" style="padding-left:0px; margin-top:12px; margin-left:500px;">
+        <div class="row-fluid">
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="KullaniciAd" class="control-label"style="font-weight:bold;font-size:20px; color:white;"></label>
+                            <input asp-for="KullaniciAd" class="form-control" />
+                            <span asp-validation-for="KullaniciAd" class="text-danger"></span>
+                        </div>
+                      
+                        <div class="form-group">
+                            <label asp-for="KullaniciSifre" class="control-label"style="font-weight:bold;font-size:20px; color:white;"></label>
+                            <input asp-for="KullaniciSifre" class="form-control" />
+                            <span asp-validation-for="KullaniciSifre" class="text-danger"></span>
+                        </div>
+                       
+                        <div class="form-group form-check">
+                            <label class="form-check-label" style="font-weight:bold;font-size:15px; color:white;">
+                                <input class="form-check-input" asp-for="LoggedStatus" /> @Html.DisplayNameFor(model => model.LoggedStatus)
+                            </label>
+                        </div>
+                        <button type="submit">Giriş</button>
+                        @if (ViewData["OnayMesaji"] != null)
+                        {
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <label>@ViewData["OnayMesaji"] </label>
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
